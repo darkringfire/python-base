@@ -20,8 +20,20 @@ len(A)+len(B) элементов). Решение оформите в виде �
 def merge(a, b):
     c = []
     ia = ib = 0
-    while ia < len(a) and ib < len(b):
-        
+    a_len, b_len = len(a), len(b)
+    while ia < a_len or ib < b_len:
+        if ia == a_len:
+            c.extend(b[ib:])
+            ib = b_len
+        elif ib == b_len:
+            c.extend(a[ia:])
+            ia = a_len
+        elif a[ia] < b[ib]:
+            c.append(a[ia])
+            ia += 1
+        else:
+            c.append(b[ib])
+            ib += 1
     return c
 
 

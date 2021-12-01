@@ -9,10 +9,12 @@ def main():
     beat = False
 
     for i in range(len(queens) - 1):
+        xi, yi = queens[i][0], queens[i][1]
         for j in range(i+1, len(queens)):
-            if queens[i][0]+queens[i][1] == queens[j][0]+queens[j][1]:
+            xj, yj = queens[j][0], queens[j][1]
+            if xi + yi == xj + yj or xi - yi == xj - yj:
                 beat = True
-            if queens[i][0]-queens[i][1] == queens[j][0]-queens[j][1]:
+            elif xi == xj or yi == yj:
                 beat = True
 
     print_bool(beat)

@@ -50,6 +50,10 @@ def dist(city, shelter):
 
 
 def is_next_nearer(city, shelters, sh_n):
+    """
+    Check is the city tuple nearer to shelter sh_n+1 than shelter sh_n
+    in shelters list
+    """
     cur_dist = dist(city, shelters[sh_n])
     next_dist = dist(city, shelters[sh_n+1])
     return next_dist < cur_dist

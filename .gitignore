@@ -50,3 +50,6 @@ Thumbs.db
 
 /venv/
 /venv*/
+
+input.txt
+output.txt

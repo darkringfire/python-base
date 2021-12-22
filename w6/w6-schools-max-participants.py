@@ -24,9 +24,8 @@ from collections import defaultdict
 
 
 def main():
-    debug = True
+    debug = False
     cnt = defaultdict(lambda: 0)
-    max_participants = 0
     with open('input.txt', 'r', encoding='utf-8') as f:
         for line in f:
             row = line.split()
@@ -34,16 +33,22 @@ def main():
             if debug:
                 print(school)
             cnt[school] += 1
-            if cnt[school] > max_participants:
-                max_participants = cnt[school]
-    sorted_counters = sorted(
+    sort_cnt = sorted(
         cnt.items(),
         key=lambda k: (-k[1], k[0])
     )
+    max_schools = []
+    i = 0
+    max_participants = sort_cnt[0][1]
+    while i < len(sort_cnt) and sort_cnt[i][1] == max_participants:
+        max_schools.append(sort_cnt[i][0])
+        i += 1
+
     if debug:
         print(cnt)
-        print(sorted_counters)
+        print(sort_cnt)
         print(max_participants)
+    print(*max_schools)
 
 
 main()
